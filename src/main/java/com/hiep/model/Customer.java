@@ -1,6 +1,11 @@
 package com.hiep.model;
 
+
+
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "customers")
@@ -9,7 +14,16 @@ public class Customer {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Long id;
+
+
+    @NotNull(message = "Chưa có tên")
+    @NotEmpty(message = "Chưa nhập tên")
+    @Size(min = 5,max = 12,message = "Tên từ 5-12 kí tự")
     private String firstName;
+
+    @NotNull(message = "Chưa có tên")
+    @NotEmpty(message = "Chưa nhập tên")
+    @Size(min = 5,max = 15,message = "Tên từ 5-15 kí tự")
     private String lastName;
 
     @ManyToOne
